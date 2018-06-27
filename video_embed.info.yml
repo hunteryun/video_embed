@@ -1,0 +1,5 @@
+name: Video Embed
+type: module
+description: 'Displaying videos from 3rd party providers such as Youku.'
+package: Video Embed
+core: 1.x

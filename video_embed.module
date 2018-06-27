@@ -1,0 +1,13 @@
+<?php
+
+use Hunter\video_embed\Plugin\ProviderManager;
+
+ /**
+  * Parsing the video url.
+  */
+ function video_play($url, $args = array()) {
+   $providerManager = new ProviderManager();
+   $provider = $providerManager->loadProviderFromInput($url);
+   $output = $provider->renderEmbedCode('800', '600', TRUE);
+   return $output;
+ }
