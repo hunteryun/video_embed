@@ -6,8 +6,17 @@ use Hunter\video_embed\Plugin\ProviderManager;
   * Parsing the video url.
   */
  function video_play($url, $args = array()) {
+   if(!isset($args['width'])){
+     $args['width'] = '800';
+   }
+   if(!isset($args['height'])){
+     $args['height'] = '600';
+   }
+   if(!isset($args['autoplay'])){
+     $args['autoplay'] = TRUE;
+   }
    $providerManager = new ProviderManager();
    $provider = $providerManager->loadProviderFromInput($url);
-   $output = $provider->renderEmbedCode('800', '600', TRUE);
+   $output = $provider->renderEmbedCode($args['width'], $args['height'], $args['autoplay']);
    return $output;
  }
