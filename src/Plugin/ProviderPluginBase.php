@@ -84,29 +84,4 @@ abstract class ProviderPluginBase implements ProviderPluginInterface {
     return !empty($id);
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function renderThumbnail($image_style, $link_url) {
-    $output['#theme'] = 'image_style';
-    return $output;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function downloadThumbnail() {
-    $local_uri = $this->getLocalThumbnailUri();
-    if (!file_exists($local_uri)) {
-      file_prepare_directory($this->thumbsDirectory, FILE_CREATE_DIRECTORY);
-      try {
-        $thumbnail = $this->httpClient->request('GET', $this->getRemoteThumbnailUrl());
-        file_unmanaged_save_data((string) $thumbnail->getBody(), $local_uri);
-      }
-      catch (\Exception $e) {
-      }
-    }
-  }
-
-
 }

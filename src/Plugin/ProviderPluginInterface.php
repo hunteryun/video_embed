@@ -19,38 +19,6 @@ interface ProviderPluginInterface {
   public static function isApplicable($input);
 
   /**
-   * Render a thumbnail.
-   *
-   * @param string $image_style
-   *   The quality of the thumbnail to render.
-   * @param string $link_url
-   *   Where the thumbnail should be linked to.
-   *
-   * @return array
-   *   A renderable array of a thumbnail.
-   */
-  public function renderThumbnail($image_style, $link_url);
-
-  /**
-   * Get the URL of the remote thumbnail.
-   *
-   * This is used to download the remote thumbnail and place it on the local
-   * file system so that it can be rendered with image styles. This is only
-   * called if no existing file is found for the thumbnail and should not be
-   * called unnecessarily, as it might query APIs for video thumbnail
-   * information.
-   *
-   * @return string
-   *   The URL to the remote thumbnail file.
-   */
-  public function getRemoteThumbnailUrl();
-
-  /**
-   * Download the remote thumbnail URL to the local thumbnail URI.
-   */
-  public function downloadThumbnail();
-
-  /**
    * Render embed code.
    *
    * @param string $width

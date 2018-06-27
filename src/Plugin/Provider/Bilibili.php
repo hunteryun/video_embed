@@ -12,17 +12,17 @@ use Hunter\video_embed\Annotation\VideoEmbedProvider;
 
 /**
  * @VideoEmbedProvider(
-*   id = "youku",
-*   title = "Youku"
+*   id = "bilibili",
+*   title = "Bilibili"
  * )
  */
-class Youku extends ProviderPluginBase {
+class Bilibili extends ProviderPluginBase {
 
   /**
    * {@inheritdoc}
    */
   public function renderEmbedCode($width, $height, $autoplay) {
-    return '<iframe src="http://player.youku.com/embed/'.$this->getVideoId().'" width="'.$width.'" height="'.$height.'" frameborder=0 allowfullscreen></iframe> ';
+    return '<iframe src="//player.bilibili.com/player.html?aid='.$this->getVideoId().'" width="'.$width.'" height="'.$height.'" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>';
   }
 
   /**
@@ -33,12 +33,13 @@ class Youku extends ProviderPluginBase {
     // Parse_url is an easy way to break a url into its components.
     $parsed = parse_url($input);
     $path = $parsed['path'];
-    $parts = explode('/', $path);
-    foreach ($parts as $part) {
-      if (strstr($part, 'id_')) {
-        $id = str_replace('id_', '', $part);
-        $id = str_replace('.html', '', $id);
-        return $id;
+    if($parsed['host'] == 'www.bilibili.com'){
+      $parts = explode('/', $path);
+      foreach ($parts as $part) {
+        if (strstr($part, 'av')) {
+          $id = str_replace('av', '', $part);
+          return $id;
+        }
       }
     }
   }
