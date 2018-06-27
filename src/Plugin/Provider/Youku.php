@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Hunter\video_embed_youku\Plugin\Provider\Youku.
- */
-
 namespace Hunter\video_embed\Plugin\Provider;
 
 use Hunter\video_embed\Plugin\ProviderPluginBase;
