@@ -2,9 +2,6 @@
 
 namespace Hunter\video_embed\Plugin;
 
-use GuzzleHttp\ClientInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 /**
  * A base for the provider plugins.
  */
@@ -32,25 +29,7 @@ abstract class ProviderPluginBase implements ProviderPluginInterface {
   protected $input;
 
   /**
-   * An http client.
-   *
-   * @var \GuzzleHttp\ClientInterface
-   */
-  protected $httpClient;
-
-  /**
    * Create a plugin with the given input.
-   *
-   * @param string $configuration
-   *   The configuration of the plugin.
-   * @param string $plugin_id
-   *   The plugin id.
-   * @param array $plugin_definition
-   *   The plugin definition.
-   * @param \GuzzleHttp\ClientInterface $http_client
-   *    An HTTP client.
-   *
-   * @throws \Exception
    */
   public function __construct($input, $definition) {
     $this->videoId = $this->getIdFromInput($input);

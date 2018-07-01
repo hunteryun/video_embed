@@ -8,25 +8,13 @@ namespace Hunter\video_embed\Plugin;
 class ProviderManager implements ProviderManagerInterface {
 
   /**
-	 * @Inject
-	 * @var Container $container
-	 */
-	protected $container;
-
-	/**
-	 * @Inject
-	 * @var Reader $annotationReader
-	 */
-	protected $annotationReader;
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getDefinitions() {
-		global $app;
-		$definitions = $app->getPluginList();
-		return $definitions;
-	}
+   * {@inheritdoc}
+   */
+  public function getDefinitions() {
+    global $app;
+    $definitions = $app->getPluginList();
+    return $definitions;
+  }
 
   /**
    * {@inheritdoc}
